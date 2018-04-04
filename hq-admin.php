@@ -63,4 +63,35 @@ add_action( 'admin_bar_menu', 'remove_wp_logo', 999 );
 function remove_wp_logo( $wp_admin_bar ) {
 	$wp_admin_bar->remove_node( 'wp-logo' );
 }
+
+
+
+/*
+	Disable Default Dashboard Widgets
+*/
+function disable_default_dashboard_widgets() {
+	global $wp_meta_boxes;
+	// wp..
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_activity']);
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']);
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts']);
+	// bbpress
+	unset($wp_meta_boxes['dashboard']['normal']['core']['bbp-dashboard-right-now']);
+	// yoast seo
+	unset($wp_meta_boxes['dashboard']['normal']['core']['yoast_db_widget']);
+	// gravity forms
+	unset($wp_meta_boxes['dashboard']['normal']['core']['rg_forms_dashboard']);
+}
+add_action('wp_dashboard_setup', 'disable_default_dashboard_widgets', 999);
+
+
+
+
+
 ?>
