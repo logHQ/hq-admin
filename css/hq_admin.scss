@@ -89,7 +89,7 @@ body {
 	top: 81px;
 }
 #wpbody {
-	padding-top: 61px;
+	padding-top: 36px;
 
 	.folded & {
 		padding-top: 36px;
@@ -145,7 +145,7 @@ body {
 #wpadminbar {
 	background: #444343;
 	color: #ccc;
-	height: 61px;
+	height: 36px;
 	left: 200px;
 	padding: 0 10px;
 	right: 0;
@@ -287,7 +287,7 @@ body {
 #wpcontent #wp-admin-bar-root-default > li > a,
 #wpcontent #wp-admin-bar-top-secondary > li > a,
 #wpcontent #wpadminbar #wp-admin-bar-wp-logo>.ab-item {
-	padding: 14px 10px 15px 10px;
+	padding: 5px 10px;
 }
 .folded #wpcontent #wp-admin-bar-root-default > li > a,
 .folded #wpcontent #wp-admin-bar-top-secondary > li > a,
@@ -337,7 +337,7 @@ body {
 .wrap div.updated {
 	-webkit-box-shadow: none;
 	box-shadow: none;
-	margin: 32px 0 12px 0;
+	margin: 0px 0 12px 0;
 }
 .branch-4-8 .wrap div.error,
 .branch-4-8 .wrap div.updated,
