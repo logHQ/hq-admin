@@ -2,7 +2,7 @@
 
 /*
 Plugin Name: HQ Admin
-Plugin URI: https://wp.login.plus/hq-admin/
+Plugin URI: https://github.com/loghq/hq-admin/
 Description: Nice WordPress Admin
 Author: LogHQ
 Version: 1.0
@@ -70,8 +70,13 @@ function remove_wp_logo( $wp_admin_bar ) {
 	Disable Default Dashboard Widgets
 */
 function disable_default_dashboard_widgets() {
+    
+    remove_action('welcome_panel', 'wp_welcome_panel');
+    
+    
 	global $wp_meta_boxes;
 	// wp..
+	unset($wp_meta_boxes['dashboard']['normal']['core']['welcome-panel']);
 	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_activity']);
 	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
 	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']);
@@ -87,6 +92,22 @@ function disable_default_dashboard_widgets() {
 	unset($wp_meta_boxes['dashboard']['normal']['core']['yoast_db_widget']);
 	// gravity forms
 	unset($wp_meta_boxes['dashboard']['normal']['core']['rg_forms_dashboard']);
+    
+    
+    /*
+    
+dashboard_right_now
+jetpack_summary_widget
+blc_dashboard_widget
+e-dashboard-overview
+pvc_dashboard
+tinypng_dashboard_widget
+dashboard_quick_press
+dashboard_activity
+wpseo-dashboard-overview
+dashboard_primary
+    
+    */
 }
 add_action('wp_dashboard_setup', 'disable_default_dashboard_widgets', 999);
 
