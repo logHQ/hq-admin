@@ -23,7 +23,7 @@ add_action( 'after_setup_theme', 'hq_admin_add_editor_styles' );
 
 add_filter('admin_footer_text', 'hq_admin_admin_footer_text_output');
 function hq_admin_admin_footer_text_output($text) {
-	$text = '<a href="https://wordpress.org/plugins/hq-admin/" target="_blank">HQ Admin</a>.';
+	$text = '<a href="https://github.com/loghq/hq-admin/" target="_blank" title="GitHub">HQ Admin</a>.';
   return $text;
 }
 
