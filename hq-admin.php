@@ -123,6 +123,7 @@ function admin_css(){
     if(!current_user_can('administrator')){
         echo '<style>';
         echo '.wcfm_addon_inactive_notice_box{display:none}';
+	echo '#wcfm-ultimate-notice{display:none;}';
         echo '</style>';
     }
 }
