@@ -92,6 +92,8 @@ function disable_default_dashboard_widgets() {
 	unset($wp_meta_boxes['dashboard']['normal']['core']['yoast_db_widget']);
 	// gravity forms
 	unset($wp_meta_boxes['dashboard']['normal']['core']['rg_forms_dashboard']);
+	//wcfm-ultimate-notice
+	unset($wp_meta_boxes['dashboard']['normal']['core']['wcfm-ultimate-notice']);
     
     
     /*
