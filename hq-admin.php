@@ -66,9 +66,9 @@ function remove_wp_logo( $wp_admin_bar ) {
 
 
 
-/*
-	Disable Default Dashboard Widgets
-*/
+/* 	Disable Default Dashboard Widgets   */
+
+
 function disable_default_dashboard_widgets() {
     
     remove_action('welcome_panel', 'wp_welcome_panel');
@@ -110,9 +110,22 @@ wpseo-dashboard-overview
 dashboard_primary
     
     */
+	
 }
 add_action('wp_dashboard_setup', 'disable_default_dashboard_widgets', 999);
 
+
+
+
+add_action('admin_head','admin_css');
+
+function admin_css(){
+    if(!current_user_can('administrator')){
+        echo '<style>';
+        echo '.wcfm_addon_inactive_notice_box{display:none}';
+        echo '</style>';
+    }
+}
 
 
 
