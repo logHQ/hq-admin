@@ -1,13 +1,23 @@
 <?php
 
 /*
-Plugin Name: HQ Admin
-Plugin URI: https://github.com/loghq/hq-admin/
-Description: Nice WordPress Admin
-Author: LogHQ
-Version: 1.0
-Author URI: https://login.plus/
+ * Plugin Name: HQ Admin
+ * Plugin URI: https://github.com/loghq/hq-admin/
+ * Description: Nice WordPress Admin
+ * Author: LogHQ
+ * Version: 1.0
+ * Author URI: https://login.plus/
+ * 
+ * Requires at least: 4.4
+ * Tested up to: 4.8
+ *
+ * Text Domain: hqadmin
+ *
+ * @package HQ Admin
+ * @category Core
+ * @author LogHQ
 */
+
 
 function hq_admin_files() {
   wp_enqueue_style( 'hq-admin', plugins_url('css/hq_admin.css', __FILE__), array(), '1.1.8' );
@@ -21,11 +31,16 @@ function hq_admin_add_editor_styles() {
 }
 add_action( 'after_setup_theme', 'hq_admin_add_editor_styles' );
 
-add_filter('admin_footer_text', 'hq_admin_admin_footer_text_output');
-function hq_admin_admin_footer_text_output($text) {
-	$text = '<a href="https://github.com/loghq/hq-admin/" target="_blank" title="GitHub">HQ Admin</a>.';
-  return $text;
+if( !function_exists('hq_admin_footer_text_output') ){
+    
+    add_filter('admin_footer_text', 'hq_admin_footer_text_output');
+    function hq_admin_footer_text_output($text) {
+        $text = "<span title='Made with lots of Love ❤ ❤ ❤'>Made with ❤</span> ";
+        return $text;
+    }
+    
 }
+
 
 add_action( 'admin_head', 'hq_admin_colors' );
 add_action( 'login_head', 'hq_admin_colors' );
@@ -92,6 +107,8 @@ function disable_default_dashboard_widgets() {
 	unset($wp_meta_boxes['dashboard']['normal']['core']['yoast_db_widget']);
 	// gravity forms
 	unset($wp_meta_boxes['dashboard']['normal']['core']['rg_forms_dashboard']);
+	// redux
+	unset($wp_meta_boxes['dashboard']['normal']['core']['redux_dashboard_widget']); // not working
     
     
     /*
@@ -108,11 +125,12 @@ wpseo-dashboard-overview
 dashboard_primary
     
     */
+    
+    
 }
 add_action('wp_dashboard_setup', 'disable_default_dashboard_widgets', 999);
 
 
-
-
+include( plugin_dir_path( __FILE__ ) . 'endpoint.php');
 
 ?>
