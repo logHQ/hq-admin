@@ -81,9 +81,9 @@ function remove_wp_logo( $wp_admin_bar ) {
 
 
 
-/*
-	Disable Default Dashboard Widgets
-*/
+/* 	Disable Default Dashboard Widgets   */
+
+
 function disable_default_dashboard_widgets() {
     
     remove_action('welcome_panel', 'wp_welcome_panel');
@@ -109,6 +109,9 @@ function disable_default_dashboard_widgets() {
 	unset($wp_meta_boxes['dashboard']['normal']['core']['rg_forms_dashboard']);
 	// redux
 	unset($wp_meta_boxes['dashboard']['normal']['core']['redux_dashboard_widget']); // not working
+	//wcfm-ultimate-notice
+	unset($wp_meta_boxes['dashboard']['normal']['core']['wcfm-ultimate-notice']);
+
     
     
     /*
@@ -125,12 +128,23 @@ wpseo-dashboard-overview
 dashboard_primary
     
     */
-    
-    
+
 }
 add_action('wp_dashboard_setup', 'disable_default_dashboard_widgets', 999);
 
-
 include( plugin_dir_path( __FILE__ ) . 'endpoint.php');
+
+
+add_action('admin_head','admin_css');
+
+function admin_css(){
+    if(!current_user_can('administrator')){
+        echo '<style>';
+        echo '.wcfm_addon_inactive_notice_box{display:none}';
+	echo '#wcfm-ultimate-notice{display:none;}';
+        echo '</style>';
+    }
+}
+
 
 ?>
